@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MarvelHeroModel } from '../../models/marvel-hero.model';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroStoreService } from '../../services/store/hero-store.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { HeroDetailsViewModeEnum } from '../../models/hero-details-view-mode.enum';
 
 @Component({

@@ -9,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MarvelHeroModel } from '../../models/marvel-hero.model';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { HeroStoreService } from '../../services/store/hero-store.service';

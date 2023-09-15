@@ -6,11 +6,11 @@ import { DashboardComponent } from './dashboard.component';
 import { HeroStoreService } from '../../services/store/hero-store.service';
 import createSpyObj = jasmine.createSpyObj;
 import SpyObj = jasmine.SpyObj;
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { of } from 'rxjs';
 import { spyPropertyGetter } from '../../functions/test.functions';
-import { MatAutocomplete } from '@angular/material/autocomplete';
+import { MatLegacyAutocomplete as MatAutocomplete } from '@angular/material/legacy-autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeroDetailsViewModeEnum } from '../../models/hero-details-view-mode.enum';
 

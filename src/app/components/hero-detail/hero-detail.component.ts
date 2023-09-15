@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarvelHeroModel } from '../../models/marvel-hero.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { HeroDetailsViewModeEnum } from '../../models/hero-details-view-mode.enum';
 import { HeroStoreService } from '../../services/store/hero-store.service';

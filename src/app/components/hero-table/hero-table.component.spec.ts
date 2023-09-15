@@ -8,7 +8,7 @@ import { HEROES_MOCK } from '../../services/api-service/mock-heroes';
 import SpyObj = jasmine.SpyObj;
 import createSpyObj = jasmine.createSpyObj;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource, MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MarvelHeroModel } from '../../models/marvel-hero.model';
 
 describe('HeroTableComponent', () => {
