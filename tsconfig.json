@@ -13,15 +13,19 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "resolveJsonModule": true, //already there
+    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true, // Add this line
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2015", "dom"]
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
