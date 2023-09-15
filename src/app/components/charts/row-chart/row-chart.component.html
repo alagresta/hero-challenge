@@ -1,0 +1,17 @@
+<div *ngIf="showUniqueValues; then values; else chart">here is ignored</div>
+
+<ng-template #chart
+  ><div *ngIf="data.length > 5; then bar; else pie">here is ignored</div></ng-template
+>
+<ng-template #bar>
+  <div class="text-center" class="row-chart-container"><app-bar [data]="data"></app-bar></div
+></ng-template>
+<ng-template #pie>
+  <div class="text-center" class="row-chart-container"><app-pie [data]="data"></app-pie></div
+></ng-template>
+<ng-template #values>
+  <div class="row-chart-container text-left p-1">
+    <span class="display-6">{{ data.length }}</span>
+    <p class="">unique values</p>
+  </div>
+</ng-template>

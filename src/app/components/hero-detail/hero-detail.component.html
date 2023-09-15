@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>
+  <div [ngSwitch]="data.mode">
+    <ng-container *ngSwitchCase="dialogViewModes.CREATE"> Create New Hero </ng-container>
+    <ng-container *ngSwitchCase="dialogViewModes.EDIT"> Edit Hero </ng-container>
+    <ng-container *ngSwitchCase="dialogViewModes.VIEW"> View Hero Details </ng-container>
+  </div>
+</h1>
+<div mat-dialog-content>
+  <form novalidate [formGroup]="heroForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Full name</mat-label>
+      <input matInput placeholder="Your full name" [formControlName]="'nameLabel'" required />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Gender</mat-label>
+      <mat-select [formControlName]="'genderLabel'">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Citizenship</mat-label>
+      <input
+        matInput
+        placeholder="Enter Citizenship"
+        [formControlName]="'citizenshipLabel'"
+        required
+      />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Skills</mat-label>
+      <input matInput placeholder="Enter Skills" [formControlName]="'skillsLabel'" required />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Occupation</mat-label>
+      <input
+        matInput
+        placeholder="Enter Occupation"
+        [formControlName]="'occupationLabel'"
+        required
+      />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Member Of</mat-label>
+      <input matInput placeholder="Enter Member Of" [formControlName]="'memberOfLabel'" required />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Creator</mat-label>
+      <input matInput placeholder="Enter creator" [formControlName]="'creatorLabel'" required />
+      <!--     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button
+    [disabled]="heroForm.invalid"
+    mat-raised-button
+    color="primary"
+    type="submit"
+    *ngIf="data.mode !== dialogViewModes.VIEW"
+    (click)="submit()"
+  >
+    Save
+  </button>
+  <button mat-raised-button mat-dialog-close color="warn">Close</button>
+</div>

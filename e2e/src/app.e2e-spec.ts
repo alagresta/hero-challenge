@@ -12,7 +12,7 @@ class Hero {
 
   // Factory methods
 
-  // Hero from string formatted as '<id> <name>'.
+  // HeroModel from string formatted as '<id> <name>'.
   static fromString(s: string): Hero {
     return new Hero(
       +s.substring(0, s.indexOf(' ')),
@@ -20,14 +20,14 @@ class Hero {
     );
   }
 
-  // Hero from hero list <li> element.
+  // HeroModel from hero list <li> element.
   static async fromLi(li: ElementFinder): Promise<Hero> {
     const stringsFromA = await li.all(by.css('a')).getText();
     const strings = stringsFromA[0].split(' ');
     return { id: +strings[0], name: strings[1] };
   }
 
-  // Hero id and name from the given detail element.
+  // HeroModel id and name from the given detail element.
   static async fromDetail(detail: ElementFinder): Promise<Hero> {
     // Get hero id from the first <div>
     const id = await detail.all(by.css('div')).first().getText();
@@ -163,7 +163,7 @@ describe('Tutorial part 6', () => {
       expect(await page.appHeroes.isPresent()).toBeTruthy();
       expect(await page.allHeroes.count()).toEqual(8, 'number of heroes');
       const heroesAfter = await toHeroArray(page.allHeroes);
-      // console.log(await Hero.fromLi(page.allHeroes[0]));
+      // console.log(await HeroModel.fromLi(page.allHeroes[0]));
       const expectedHeroes =  heroesBefore.filter(h => h.name !== newHeroName);
       expect(heroesAfter).toEqual(expectedHeroes);
       // expect(page.selectedHeroSubview.isPresent()).toBeFalsy();
@@ -196,7 +196,7 @@ describe('Tutorial part 6', () => {
         expect(await button.getCssValue('border')).toContain('none');
         expect(await button.getCssValue('padding')).toBe('1px 10px 3px');
         expect(await button.getCssValue('border-radius')).toBe('4px');
-        // Styles defined in heroes.component.css
+        // Styles defined in heroes.component.scss
         expect(await button.getCssValue('left')).toBe('210px');
         expect(await button.getCssValue('top')).toBe('5px');
       }

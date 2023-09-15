@@ -1,0 +1,66 @@
+<div class="mt-1" style="position: relative">
+  <div *ngIf="isLoading" class="mat-table-overlay"></div>
+
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+    <ng-container
+      [matColumnDef]="column"
+      *ngFor="let column of displayedColumns.columnNamesChartLabel"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        <app-row-chart
+          [data]="displayedColumns.columns[column.replace('-chart', '')]"
+          [showUniqueValues]="column.replace('-chart', '') === 'nameLabel'"
+        ></app-row-chart>
+      </th>
+    </ng-container>
+
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns.columnNames">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ column }}
+      </th>
+      <td
+        [id]="'mat-row-cell-' + i"
+        mat-cell
+        *matCellDef="let element; let i = index"
+        (click)="column !== 'actions' ? onRowClick(element) : null"
+      >
+        <ng-container
+          [ngTemplateOutlet]="column === 'actions' ? actionCell : contentCell"
+          [ngTemplateOutletContext]="{ element: element, column: column, i: i }"
+        >
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <!-- creatorLabel Column -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns.columnNames; sticky: true"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns.columnNamesChartLabel; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns.columnNames"></tr>
+  </table>
+</div>
+<ng-template #contentCell let-element="element" let-column="column">{{
+  element[column]
+}}</ng-template>
+<ng-template #actionCell let-element="element" let-i="i">
+  <div class="actions-flex-container">
+    <button
+      [id]="'mat-row-edit-button-' + i"
+      mat-mini-fab
+      color="primary"
+      aria-label="Edit Hero"
+      (click)="onEditHeroClick(element)"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      [id]="'mat-row-delete-button-' + i"
+      mat-mini-fab
+      color="warn"
+      aria-label="Delete Hero"
+      (click)="onDeleteHeroClick(element)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>

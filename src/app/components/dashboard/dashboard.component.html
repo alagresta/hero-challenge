@@ -1,0 +1,18 @@
+<div class="container-fluid p-1">
+  <app-hero-search (onHeroChipAdded)="handleChange($event)"></app-hero-search>
+</div>
+<div class="container-fluid p-1">
+  <button mat-raised-button class="demo-button" (click)="createNewHero()" id="new-hero">
+    <mat-icon>person</mat-icon>
+    Add New Hero
+  </button>
+</div>
+
+<div class="mat-table-container scrollbar-success">
+  <app-hero-table
+    [isLoading]="isLoading"
+    (onDeleteHero)="deleteHero($event)"
+    (onEditHero)="editHeroDetails($event)"
+    (onHeroView)="viewHeroDetails($event)"
+  ></app-hero-table>
+</div>
